@@ -11,4 +11,4 @@ SELECT
   FROM 
       person AS p
  ORDER BY
-      interval_info ASC
+      interval_info ASC;

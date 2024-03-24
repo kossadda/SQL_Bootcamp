@@ -15,8 +15,8 @@ SELECT DISTINCT
                  WHERE 
                       p.id = o.person_id
                 ) = 'Denis'
-            THEN TRUE
-            ELSE FALSE
+           THEN TRUE
+           ELSE FALSE
       END) AS check_name
   FROM
       person_order AS o
