@@ -1,21 +1,24 @@
 SELECT
       (SELECT
-             p.name 
+             p.name
          FROM
              person AS p
-   	    WHERE
-             p.id = v.person_id
+        WHERE
+             p.id = pv.person_id
       ) AS person_name,
-	  (SELECT
+      (SELECT
              pz.name
          FROM
              pizzeria AS pz
         WHERE
-             pz.id = v.pizzeria_id
+             pz.id = pv.pizzeria_id
       ) AS pizzeria_name
   FROM
-      person_visits AS v
- WHERE
-      v.visit_date BETWEEN '2022-01-07' AND '2022-01-09'
+      (SELECT *
+         FROM
+             person_visits AS v
+        WHERE
+             v.visit_date BETWEEN '2022-01-07' AND '2022-01-09'
+      ) AS pv
  ORDER BY
       person_name ASC, pizzeria_name DESC;
