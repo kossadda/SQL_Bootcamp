@@ -6,7 +6,7 @@ FROM
     pizzeria AS p
 WHERE
     p.rating >= 3.5
-AND p.rating <= 5.0
+    AND p.rating <= 5.0
 ORDER BY
     p.rating DESC;
 
