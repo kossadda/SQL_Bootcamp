@@ -3,7 +3,7 @@ SELECT
       p.name AS object_name
   FROM
       person AS p
-UNION
+ UNION
 SELECT
       m.id AS object_id,
       m.pizza_name AS object_name

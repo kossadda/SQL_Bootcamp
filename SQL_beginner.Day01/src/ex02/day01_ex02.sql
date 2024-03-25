@@ -2,7 +2,7 @@ SELECT
       m.pizza_name
   FROM
       menu AS m
-UNION
+ UNION
 SELECT
       m.pizza_name
   FROM

@@ -2,7 +2,7 @@ SELECT
       p.name AS object_name
   FROM
       person AS p
-UNION ALL
+ UNION ALL
 SELECT
       m.pizza_name AS object_name
   FROM
