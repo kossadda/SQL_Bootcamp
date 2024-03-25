@@ -8,7 +8,7 @@ SELECT
       p.rating >= 3.5
       AND p.rating <= 5.0
  ORDER BY
-      p.rating DESC;
+      p.rating;
 
 -- Using the SELECT statement using the BETWEEN keyword
 SELECT
@@ -19,4 +19,4 @@ SELECT
  WHERE
       p.rating BETWEEN 3.5 AND 5.0
  ORDER BY
-      p.rating DESC;
+      p.rating;
