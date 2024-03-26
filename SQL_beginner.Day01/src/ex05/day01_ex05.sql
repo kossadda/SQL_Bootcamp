@@ -9,7 +9,7 @@ SELECT
       pz.rating
   FROM
       person AS p
-      CROSS JOIN
+ CROSS JOIN
       pizzeria AS pz
  ORDER BY
       person_id ASC,
