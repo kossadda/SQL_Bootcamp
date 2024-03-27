@@ -1,7 +1,7 @@
   WITH
       d AS
       (SELECT
-             d.day
+             d.day::date
          FROM
              GENERATE_SERIES
              (TIMESTAMP '2022-01-01', '2022-01-10', '1 day') AS d(day)),
@@ -15,7 +15,7 @@
              OR pv.person_id = 2
       )
 SELECT
-      d.day::date AS missing_date
+      d.day AS missing_date
   FROM
       d
   LEFT JOIN
