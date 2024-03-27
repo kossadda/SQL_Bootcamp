@@ -19,4 +19,4 @@ SELECT
  WHERE 
       v.visit_date IS NULL
  ORDER BY
-      d.day
+      d.day;
