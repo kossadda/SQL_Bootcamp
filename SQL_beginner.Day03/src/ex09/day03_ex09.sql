@@ -8,4 +8,4 @@ VALUES (
       (SELECT COUNT(*) FROM person_visits) + 2,
       (SELECT p.id FROM person AS p WHERE p.name = 'Irina'),
       (SELECT pz.id FROM pizzeria AS pz WHERE pz.name = 'Dominos'),
-      TIMESTAMP '2022-02-24')
+      TIMESTAMP '2022-02-24');
