@@ -6,18 +6,13 @@ SELECT DISTINCT
         WHERE
              p.id = o.person_id
       ) AS name,
-      (CASE
-           WHEN
-               (SELECT
-                      p.name
-                  FROM 
-                      person AS p
-                 WHERE 
-                      p.id = o.person_id
-                ) = 'Denis'
-           THEN TRUE
-           ELSE FALSE
-      END) AS check_name
+      (SELECT
+             p.name
+         FROM 
+             person AS p
+        WHERE 
+             p.id = o.person_id
+      ) = 'Denis' AS check_name
   FROM
       person_order AS o
  WHERE
