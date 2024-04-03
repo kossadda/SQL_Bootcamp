@@ -10,37 +10,15 @@
        NATURAL JOIN
               pizzeria AS pz(pizzeria_id, pizzeria_name)),
        male AS
-       (SELECT
-              v.pizzeria_name
-          FROM
-              visits AS v
-         WHERE
-              v.gender = 'male'),
+       (SELECT v.pizzeria_name FROM visits AS v WHERE v.gender = 'male'),
        female AS
-       (SELECT
-              v.pizzeria_name
-          FROM
-              visits AS v
-         WHERE
-              v.gender = 'female')
-(SELECT
-       *
-   FROM
-       male
+       (SELECT v.pizzeria_name FROM visits AS v WHERE v.gender = 'female')
+(SELECT * FROM male
  EXCEPT ALL
- SELECT
-       *
-   FROM
-       female)
+ SELECT * FROM female)
   UNION ALL
-(SELECT
-       *
-   FROM
-       female
+(SELECT * FROM female
  EXCEPT ALL
- SELECT
-       *
-   FROM
-       male)
+ SELECT * FROM male)
   ORDER BY
        pizzeria_name ASC;
