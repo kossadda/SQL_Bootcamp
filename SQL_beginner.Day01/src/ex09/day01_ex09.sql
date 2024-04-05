@@ -3,25 +3,21 @@ SELECT
 FROM
       pizzeria AS p
 WHERE 
-      name NOT IN
+      p.id NOT IN
       (SELECT
-            DISTINCT pz.name
-      FROM
-            person_visits AS pv
-      NATURAL JOIN
-            pizzeria AS pz(pizzeria_id)
-      );
+             pv.pizzeria_id
+         FROM
+             person_visits AS pv);
 
 SELECT
       p.name
   FROM
       pizzeria AS p
  WHERE
-      NOT EXISTS (
-            SELECT
-                  p.name
-              FROM
-                  person_visits AS pv
-             WHERE
-                  p.id = pv.pizzeria_id
-      );
+      NOT EXISTS
+      (SELECT
+             p.name
+         FROM
+             person_visits AS pv
+        WHERE
+             p.id = pv.pizzeria_id);
