@@ -15,7 +15,7 @@ SELECT
 -- A unique index does not allow the creation of duplicates of the columns
 -- specified in the index. Let's check this by adding a new row to the "menu"
 INSERT INTO
-      menu
+      menu (id, pizzeria_id, pizza_name, price)
 VALUES
       (21, 4, 'mushroom pizza', 1000);
 
