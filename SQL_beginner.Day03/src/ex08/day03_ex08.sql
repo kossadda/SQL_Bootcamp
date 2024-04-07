@@ -3,5 +3,5 @@ INSERT INTO
 VALUES (
       (SELECT COUNT(*) FROM menu) + 12,
       (SELECT pz.id FROM pizzeria AS pz WHERE pz.name = 'Dominos'),
-      ('sicilians pizza'),
+      ('sicilian pizza'),
       (900));
