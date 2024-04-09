@@ -22,26 +22,27 @@ VALUES
       ('d', 'b', 25),
       ('d', 'c', 30)
 
+CREATE VIEW v_all_nodes AS
   WITH RECURSIVE all_nodes(point1, point2, tour, total_cost) AS (
-      SELECT
-            point1, point2,
-            point1 || ',' || point2 AS tour,
-            cost AS total_cost
-        FROM
-            nodes
-       WHERE
-            point1 = 'a'
-       UNION ALL
-      SELECT
-            n.point1, n.point2,
-            an.tour || ',' || n.point2 AS tour,
-            an.total_cost + n.cost AS total_cost
-        FROM
-            all_nodes AS an
-        JOIN
-            nodes AS n ON an.point2  = n.point1 AND an.point1 != n.point2
-       WHERE
-            LENGTH(tour) < (SELECT COUNT(DISTINCT point1) * 2 FROM nodes))
+          SELECT
+                point1, point2,
+                point1 || ',' || point2 AS tour,
+                cost AS total_cost
+            FROM
+                nodes
+           WHERE
+                point1 = 'a'
+           UNION ALL
+          SELECT
+                n.point1, n.point2,
+                an.tour || ',' || n.point2 AS tour,
+                an.total_cost + n.cost AS total_cost
+            FROM
+                all_nodes AS an
+            JOIN
+                nodes AS n ON an.point2  = n.point1 AND an.point1 != n.point2
+           WHERE
+                LENGTH(tour) < (SELECT COUNT(DISTINCT point1) * 2 FROM nodes))
 SELECT
       total_cost,
       '{' || tour || '}' AS tour
@@ -52,6 +53,11 @@ SELECT
       AND LEFT(tour, 1) = RIGHT(tour, 1)
  ORDER BY
       total_cost ASC,
-      tour ASC
+      tour ASC;
+
+SELECT
+      *
+  FROM
+      v_all_nodes
  LIMIT
       1;
