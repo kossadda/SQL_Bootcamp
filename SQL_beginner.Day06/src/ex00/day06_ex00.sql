@@ -4,8 +4,8 @@ CREATE TABLE person_discounts
       "person_id"   BIGINT   NOT NULL,
       "pizzeria_id" BIGINT   NOT NULL,
       "discount"    NUMERIC  NOT NULL,
-      CONSTRAINT uk_person_discounts 
-                 UNIQUE(person_id, pizzeria_id),
+      -- CONSTRAINT uk_person_discounts 
+      --            UNIQUE(person_id, pizzeria_id),
       CONSTRAINT chk_discount_range
                  CHECK(discount BETWEEN 0 AND 100),
       CONSTRAINT fk_person_discounts_person_id
