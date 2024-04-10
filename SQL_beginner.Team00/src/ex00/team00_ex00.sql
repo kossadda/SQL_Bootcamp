@@ -4,7 +4,7 @@ CREATE TABLE nodes
       "point2" VARCHAR(5) NOT NULL,
       "cost"      INT     NOT NULL,
       CONSTRAINT uk_nodes UNIQUE(point1, point2)
-)
+);
 
 INSERT INTO
       nodes
