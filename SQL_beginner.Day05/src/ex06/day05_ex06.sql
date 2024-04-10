@@ -1,5 +1,5 @@
 CREATE INDEX
-      idx_1 ON pizzeria (rating)
+      idx_1 ON pizzeria (rating);
 
 SET ENABLE_SEQSCAN TO OFF;
 
