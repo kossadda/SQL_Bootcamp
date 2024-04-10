@@ -1,8 +1,8 @@
 CREATE TABLE nodes
 (
-      "point1" TEXT NOT NULL,
-      "point2" TEXT NOT NULL,
-      "cost"   INT  NOT NULL,
+      "point1" VARCHAR(5) NOT NULL,
+      "point2" VARCHAR(5) NOT NULL,
+      "cost"      INT     NOT NULL,
       CONSTRAINT uk_nodes UNIQUE(point1, point2)
 )
 
@@ -20,7 +20,7 @@ VALUES
       ('c', 'a', 15),
       ('d', 'a', 20),
       ('d', 'b', 25),
-      ('d', 'c', 30)
+      ('d', 'c', 30);
 
 CREATE VIEW v_all_nodes AS
   WITH RECURSIVE all_nodes(point1, point2, tour, total_cost) AS (
@@ -59,5 +59,5 @@ SELECT
       *
   FROM
       v_all_nodes
- LIMIT
-      1;
+ WHERE
+      total_cost = (SELECT MIN(total_cost) FROM v_all_nodes);
