@@ -16,16 +16,22 @@
          JOIN
              menu AS m ON po.menu_id = m.id
         GROUP BY
-             pizzeria_id)
+             pizzeria_id),
+      joined AS
+      (SELECT
+             pizzeria_id,
+             COALESCE(visits.count, 0) + COALESCE(orders.count, 0) AS total_count
+         FROM
+             visits
+         FULL JOIN
+             orders USING(pizzeria_id))
 SELECT
       pz.name,
-      v.count + o.count AS total_count 
+      total_count 
   FROM
-      visits AS v
+      joined AS j
   JOIN
-      orders AS o USING(pizzeria_id)
-  JOIN
-      pizzeria AS pz ON pizzeria_id = pz.id
+      pizzeria AS pz ON j.pizzeria_id = pz.id
  ORDER BY
       total_count DESC,
       name ASC;
