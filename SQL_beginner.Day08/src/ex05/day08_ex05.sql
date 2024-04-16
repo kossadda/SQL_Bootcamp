@@ -13,11 +13,18 @@ HAVING
       SUM(rating) > 20;
 
 -- SECOND SESSION
-UPDATE pizzeria SET rating = 1.0 WHERE name = 'Pizza Hut';
+UPDATE
+      pizzeria
+   SET
+      rating = 1.0
+ WHERE
+      name = 'Pizza Hut';
 
 COMMIT;
 
--- FIRST SESSION
+-- FIRST SESSION: as a result, within the framework of one transaction in the
+-- first session, you can see that the set of rows issued before and after the
+-- completion of the transaction of the second session differs
 SELECT
       SUM(rating)
   FROM
