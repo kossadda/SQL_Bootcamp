@@ -2,7 +2,7 @@ BEGIN;
 
 CREATE TABLE person_audit
 (
-      "created"    TIMESTAMPTZ NOT NULL DEFAULT 'now',
+      "created"    TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
       "type_event" CHAR(1)     NOT NULL DEFAULT 'I',
       "row_id"     BIGINT      NOT NULL,
       "name"       VARCHAR,
@@ -43,3 +43,4 @@ SELECT
       person_audit;
 
 ROLLBACK;
+COMMIT;
