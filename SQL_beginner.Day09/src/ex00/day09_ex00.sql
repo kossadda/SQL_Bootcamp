@@ -14,14 +14,14 @@ CREATE TABLE person_audit
 --------------------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION 
       fnc_trg_person_insert_audit()
-RETURNS TRIGGER AS $$
- BEGIN
+RETURNS TRIGGER AS
+$$ BEGIN
       INSERT INTO
             person_audit(row_id, name, age, gender, address)
       SELECT
             NEW.*;
       RETURN NULL;
-   END $$ 
+END $$ 
 LANGUAGE PLPGSQL VOLATILE;
 
 CREATE TRIGGER

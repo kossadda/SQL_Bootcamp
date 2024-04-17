@@ -12,8 +12,8 @@ DELETE FROM person_audit;
 --------------------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION 
       fnc_trg_person_audit()
-RETURNS TRIGGER AS $$
- BEGIN
+RETURNS TRIGGER AS
+$$ BEGIN
       IF TG_OP = 'INSERT' THEN
             INSERT INTO
                   person_audit(row_id, name, age, gender, address)
@@ -28,7 +28,7 @@ RETURNS TRIGGER AS $$
             SELECT 'D', OLD.*;
       END IF;
       RETURN NULL;
-   END $$ 
+END $$ 
 LANGUAGE PLPGSQL VOLATILE;
 
 CREATE TRIGGER
