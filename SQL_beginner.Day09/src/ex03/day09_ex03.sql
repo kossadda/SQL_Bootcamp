@@ -29,7 +29,7 @@ RETURNS TRIGGER AS $$
       END IF;
       RETURN NULL;
    END $$ 
-LANGUAGE plpgsql VOLATILE;
+LANGUAGE PLPGSQL VOLATILE;
 
 CREATE TRIGGER
       trg_person_audit

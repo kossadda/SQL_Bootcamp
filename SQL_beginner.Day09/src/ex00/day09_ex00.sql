@@ -22,7 +22,7 @@ RETURNS TRIGGER AS $$
             NEW.*;
       RETURN NULL;
    END $$ 
-LANGUAGE plpgsql VOLATILE;
+LANGUAGE PLPGSQL VOLATILE;
 
 CREATE TRIGGER
       trg_person_insert_audit

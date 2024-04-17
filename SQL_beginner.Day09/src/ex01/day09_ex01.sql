@@ -10,7 +10,7 @@ RETURNS TRIGGER AS $$
             'U', OLD.*;
       RETURN NULL;
    END $$ 
-LANGUAGE plpgsql VOLATILE;
+LANGUAGE PLPGSQL VOLATILE;
 
 CREATE TRIGGER
       trg_person_update_audit
