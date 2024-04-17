@@ -1,17 +1,16 @@
 BEGIN;
-
+--------------------------------------------------------------------------------
 CREATE OR REPLACE FUNCTION 
       fnc_trg_person_update_audit()
-RETURNS
-      TRIGGER AS
-      $$ BEGIN
+RETURNS TRIGGER AS $$
+ BEGIN
       INSERT INTO
             person_audit(type_event, row_id, name, age, gender, address)
       SELECT
             'U', OLD.*;
       RETURN NULL;
-      END $$ 
-LANGUAGE plpgsql;
+   END $$ 
+LANGUAGE plpgsql VOLATILE;
 
 CREATE TRIGGER
       trg_person_update_audit
@@ -19,7 +18,7 @@ CREATE TRIGGER
       person FOR EACH ROW
 EXECUTE FUNCTION 
       fnc_trg_person_update_audit();
-
+--------------------------------------------------------------------------------
 UPDATE
       person
    SET
@@ -31,11 +30,11 @@ UPDATE
    SET
       name = 'Damir'
  WHERE id = 10;
-
+--------------------------------------------------------------------------------
 SELECT
       *
   FROM
       person_audit;
-
+--------------------------------------------------------------------------------
 ROLLBACK;
 COMMIT;
