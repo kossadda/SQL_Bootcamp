@@ -15,7 +15,7 @@ Resume: Today you will know what DWH is and how to create a first ETL process
 
 Let’s take a look at the data sources and first logical data layer (ODS - Operational Data Store) in the DWH.
 
-![T01_05](misc/images/T01_05.png)
+![T01_05](misc/T01_05.png)
 
 `User` table Definition (in a Green Source Database):
 
@@ -163,7 +163,7 @@ Below presented a table of result columns and corresponding calculation formula.
 | currency_name | source: currency.name | 
 | currency_in_usd | involved sources: currency.rate_to_usd, currency.updated, balance.updated.Take a look at a graphical interpretation of the formula below.| 
 
-![T01_06](misc/images/T01_06.png)
+![T01_06](misc/T01_06.png)
 
 - need to find a nearest rate_to_usd of currency at the past (t1) 
 - if t1 is empty (means no any rates at the past) then find a nearest rate_to_usd of currency at the future (t2)
